@@ -19,9 +19,9 @@ public class Coordinate {
     @Override
     public String toString() {
         if (coordH.isPresent()) {
-            return "Coordinate{" + "number=" + number + ", X=" + coordX + ", Y=" + coordY + ", H=" + coordH + '}';
+            return number + " " + coordX + " " + coordY + " " + coordH;
         } else {
-            return "Coordinate{" + "number=" + number + ", X=" + coordX + ", Y=" + coordY + '}';
+            return number + " " + coordX + " " + coordY;
         }
     }
 
