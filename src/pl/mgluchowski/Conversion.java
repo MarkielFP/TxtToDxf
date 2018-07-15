@@ -9,22 +9,29 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Conversion {
-    
-    public static String c01 = "  a 1        123.12    456.45    ";
-    
+
+    public static boolean ruleKB = true;
+
+    public static String c01 = "  a,01 1.1        123,12516    456.4521213    ";
+
     public static void main(String[] args) {
+        
         c01 = cleanText(c01);
         System.out.println(c01);
-        System.out.println(stringToCoord(c01));
+        Coordinate coord = stringToCoord(c01);
+        System.out.println(coord);
+        Coordinate roundedCoord = roundCoordinate(coord, 2);
+        System.out.println(roundedCoord);
+        System.out.println();
     }
-    
+
     public static void convert(File path) throws FileNotFoundException, IOException {
         List<String> coordinateList = readFile(path);
         // test formatowania tekstu
         List<Coordinate> coorList = stringsToCoords(coordinateList);
         coorList.forEach(System.out::println);
     }
-    
+
     private static List<String> readFile(File path) throws FileNotFoundException, IOException {
         List<String> coordinates = new ArrayList<>();
         FileReader fr = new FileReader(path);
@@ -37,7 +44,7 @@ public class Conversion {
         }
         return coordinates;
     }
-    
+
     private static String cleanText(String text) {
         text = text.replaceAll("\t", " ");
         while (text.contains("  ")) {
@@ -52,11 +59,11 @@ public class Conversion {
         }
         return text;
     }
-    
+
     private static String replaceComma(String text) {
         return text.replace(",", ".");
     }
-    
+
     private static List<Coordinate> stringsToCoords(List<String> coordsStrings) {
         List<Coordinate> resultList = new ArrayList<>();
         for (int i = 0; i < coordsStrings.size(); i++) {
@@ -64,7 +71,7 @@ public class Conversion {
         }
         return resultList;
     }
-    
+
     private static Coordinate stringToCoord(String coordString) {
         Coordinate result;
         String[] split = cleanText(coordString).split(" ");
@@ -82,4 +89,13 @@ public class Conversion {
         }
         return result;
     }
+
+    private static Coordinate roundCoordinate(Coordinate coord, int howMuch) {
+//        coord.getCoordH()
+        return coord;
+    }
+
+//    private static double roundDouble(Double number, int howMuch) {
+//
+//    }
 }

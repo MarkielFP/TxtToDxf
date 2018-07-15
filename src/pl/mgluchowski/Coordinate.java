@@ -23,6 +23,38 @@ public class Coordinate {
         this.coordY = coordY;
     }
 
+    public void setNumber(String number) {
+        this.number = number;
+    }
+
+    public void setCoordX(double coordX) {
+        this.coordX = coordX;
+    }
+
+    public void setCoordY(double coordY) {
+        this.coordY = coordY;
+    }
+
+    public void setCoordH(double coordH) {
+        this.coordH = coordH;
+    }
+
+    public String getNumber() {
+        return number;
+    }
+
+    public double getCoordX() {
+        return coordX;
+    }
+
+    public double getCoordY() {
+        return coordY;
+    }
+
+    public double getCoordH() {
+        return coordH;
+    }
+
     @Override
     public String toString() {
         if (isXYH) {
