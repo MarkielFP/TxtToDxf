@@ -1,7 +1,11 @@
 package pl.mgluchowski;
 
 import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -71,6 +75,11 @@ public class App extends javax.swing.JFrame {
         jCheckBox1.setSelected(true);
 
         jButton2.setText("KONWERTUJ");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -145,12 +154,25 @@ public class App extends javax.swing.JFrame {
     private static File filePath;
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        JFileChooser fc = new JFileChooser();
-        fc.showOpenDialog(null);
-        filePath = fc.getSelectedFile();
+        JFileChooser openFile = new JFileChooser("C:\\JAVA");
+        openFile.showOpenDialog(null);
+        filePath = openFile.getSelectedFile();
         String Path = filePath.getAbsolutePath();
         jTextField2.setText(Path);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        if (filePath != null) {
+            try {
+                Conversion.convert(filePath);
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(null, "Błędna ścieżka do pliku");
+                Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Najpierw wybierz plik do konwersji");
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
