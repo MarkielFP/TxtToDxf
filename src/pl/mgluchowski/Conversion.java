@@ -10,12 +10,9 @@ import java.util.List;
 
 public class Conversion {
 
-    public static boolean ruleKB = true;
-
     public static String c01 = "  a,01 1.1        123,12516    456.4521213    ";
 
     public static void main(String[] args) {
-        
         c01 = cleanText(c01);
         System.out.println(c01);
         Coordinate coord = stringToCoord(c01);
@@ -26,6 +23,7 @@ public class Conversion {
     }
 
     public static void convert(File path) throws FileNotFoundException, IOException {
+        ConversionSettings.read();
         List<String> coordinateList = readFile(path);
         // test formatowania tekstu
         List<Coordinate> coorList = stringsToCoords(coordinateList);

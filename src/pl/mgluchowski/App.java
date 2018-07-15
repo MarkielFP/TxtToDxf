@@ -4,11 +4,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JCheckBox;
 import javax.swing.JFileChooser;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 
 /**
  *
@@ -153,17 +150,21 @@ public class App extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private static File filePath;
-
     private void jButtonChooseFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonChooseFileActionPerformed
         JFileChooser openFile = new JFileChooser("C:\\JAVA");
         openFile.showOpenDialog(null);
-        filePath = openFile.getSelectedFile();
+        File filePath = openFile.getSelectedFile();
+        ConversionSettings.setFilePath(filePath);
         String Path = filePath.getAbsolutePath();
         jTextField2.setText(Path);
     }//GEN-LAST:event_jButtonChooseFileActionPerformed
 
     private void jButtonConvertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConvertActionPerformed
+        ConversionSettings.setPrefix(jTextPrefix.getText());
+        ConversionSettings.setSuffix(jTextSuffix.getText());
+        ConversionSettings.setRound((int) jRound.getValue());
+        ConversionSettings.setRuleKB(jRuleKB.isSelected());
+        File filePath = ConversionSettings.getFilePath();
         if (filePath != null) {
             try {
                 Conversion.convert(filePath);
@@ -211,7 +212,6 @@ public class App extends javax.swing.JFrame {
         });
     }
 
-  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonChooseFile;
