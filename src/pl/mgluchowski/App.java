@@ -1,5 +1,6 @@
 package pl.mgluchowski;
 
+import java.awt.HeadlessException;
 import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -158,7 +159,7 @@ public class App extends javax.swing.JFrame {
             ConversionSettings.setFilePath(filePath);
             String Path = filePath.getAbsolutePath();
             jTextField2.setText(Path);
-        } catch (Exception e) {
+        } catch (HeadlessException e) {
             System.out.println("Nie wybrano pliku");
         }
     }//GEN-LAST:event_jButtonChooseFileActionPerformed

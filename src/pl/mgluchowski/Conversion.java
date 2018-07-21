@@ -12,18 +12,13 @@ import java.util.List;
 
 public class Conversion {
 
-    public static String c01 = "  a,01 1.1        123,12516    456.4521213    ";
-
-    public static void main(String[] args) {
-
-    }
-
     public static void convert() throws FileNotFoundException, IOException {
         ConversionSettings.read();
         List<String> coordinateList = readFile(ConversionSettings.getFilePath());
-        // test formatowania tekstu
         List<Coordinate> coorList = stringsToCoords(coordinateList);
-        coorList.forEach(System.out::println);
+        // test formatowania tekstu
+//        coorList.forEach(System.out::println);
+        Output.export(coorList);
     }
 
     private static List<String> readFile(File path) throws FileNotFoundException, IOException {

@@ -59,6 +59,5 @@ public class ConversionSettings {
         System.out.println("Czy zastosować reguły K-B: " + yesOrNo);
         System.out.println("Przedrostek dla nazw punktów: " + prefix);
         System.out.println("Przyrostek dla nazw punktów: " + suffix);
-
     }
 }
