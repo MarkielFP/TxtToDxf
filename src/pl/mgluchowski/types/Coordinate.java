@@ -9,7 +9,6 @@ public class Coordinate {
 
     private boolean isXYH = false;
     private boolean isXY = false;
-    private boolean isX = false;
 
     public Coordinate(String number, String coordX, String coordY, String coordH) {
         isXYH = true;
@@ -27,7 +26,6 @@ public class Coordinate {
     }
 
     public Coordinate(String number, String coordX) {
-        isX = true;
         this.number = number;
         this.coordX = coordX;
     }

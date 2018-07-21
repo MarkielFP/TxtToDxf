@@ -1,20 +1,22 @@
 package pl.mgluchowski.output;
 
+import pl.mgluchowski.convert.ConversionSettings;
+
 public class DxfFileSettings {
 
-    private String dxfHeader;
-    private String dxfBody;
-    private String dxfFooter;
+    public static String layerName = setLayerName();
 
-    public String getDxfHeader() {
-        return dxfHeader;
+    private static String setLayerName() {
+        String file = ConversionSettings.getFilePath().toString();
+        String[] fileArray = file.split("\\\\");
+        int lengthArr = fileArray.length;
+        String fileName = fileArray[lengthArr - 1];
+        if (fileName.endsWith(".txt")) {
+            return fileName.substring(0, fileName.length() - 4);
+        }
+        return fileName;
     }
 
-    public String getDxfBody() {
-        return dxfBody;
-    }
 
-    public String getDxfFooter() {
-        return dxfFooter;
-    }
+
 }
