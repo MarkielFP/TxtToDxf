@@ -1,4 +1,4 @@
-package pl.mgluchowski;
+package pl.mgluchowski.convert;
 
 import java.io.File;
 

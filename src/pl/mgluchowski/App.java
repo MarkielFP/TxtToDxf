@@ -1,5 +1,7 @@
 package pl.mgluchowski;
 
+import pl.mgluchowski.convert.Conversion;
+import pl.mgluchowski.convert.ConversionSettings;
 import java.awt.HeadlessException;
 import java.io.File;
 import java.io.IOException;

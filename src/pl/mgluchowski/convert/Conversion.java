@@ -1,5 +1,6 @@
-package pl.mgluchowski;
+package pl.mgluchowski.convert;
 
+import pl.mgluchowski.types.Coordinate;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -9,11 +10,12 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
+import pl.mgluchowski.output.Output;
 
 public class Conversion {
 
     public static void convert() throws FileNotFoundException, IOException {
-        ConversionSettings.read();
+//        ConversionSettings.read();
         List<String> coordinateList = readFile(ConversionSettings.getFilePath());
         List<Coordinate> coorList = stringsToCoords(coordinateList);
         // test formatowania tekstu
