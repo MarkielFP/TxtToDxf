@@ -151,12 +151,16 @@ public class App extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonChooseFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonChooseFileActionPerformed
-        JFileChooser openFile = new JFileChooser("C:\\JAVA");
-        openFile.showOpenDialog(null);
-        File filePath = openFile.getSelectedFile();
-        ConversionSettings.setFilePath(filePath);
-        String Path = filePath.getAbsolutePath();
-        jTextField2.setText(Path);
+        try {
+            JFileChooser openFile = new JFileChooser("C:\\JAVA");
+            openFile.showOpenDialog(null);
+            File filePath = openFile.getSelectedFile();
+            ConversionSettings.setFilePath(filePath);
+            String Path = filePath.getAbsolutePath();
+            jTextField2.setText(Path);
+        } catch (Exception e) {
+            System.out.println("Nie wybrano pliku");
+        }
     }//GEN-LAST:event_jButtonChooseFileActionPerformed
 
     private void jButtonConvertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConvertActionPerformed
@@ -167,7 +171,7 @@ public class App extends javax.swing.JFrame {
         File filePath = ConversionSettings.getFilePath();
         if (filePath != null) {
             try {
-                Conversion.convert(filePath);
+                Conversion.convert();
             } catch (IOException ex) {
                 JOptionPane.showMessageDialog(null, "Błędna ścieżka do pliku");
                 Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);

@@ -3,13 +3,15 @@ package pl.mgluchowski;
 public class Coordinate {
 
     private String number;
-    private double coordX;
-    private double coordY;
-    private double coordH;
+    private String coordX;
+    private String coordY;
+    private String coordH;
 
-    boolean isXYH = false;
+    private boolean isXYH = false;
+    private boolean isXY = false;
+    private boolean isX = false;
 
-    public Coordinate(String number, double coordX, double coordY, double coordH) {
+    public Coordinate(String number, String coordX, String coordY, String coordH) {
         isXYH = true;
         this.number = number;
         this.coordX = coordX;
@@ -17,25 +19,32 @@ public class Coordinate {
         this.coordH = coordH;
     }
 
-    public Coordinate(String number, double coordX, double coordY) {
+    public Coordinate(String number, String coordX, String coordY) {
+        isXY = true;
         this.number = number;
         this.coordX = coordX;
         this.coordY = coordY;
+    }
+
+    public Coordinate(String number, String coordX) {
+        isX = true;
+        this.number = number;
+        this.coordX = coordX;
     }
 
     public void setNumber(String number) {
         this.number = number;
     }
 
-    public void setCoordX(double coordX) {
+    public void setCoordX(String coordX) {
         this.coordX = coordX;
     }
 
-    public void setCoordY(double coordY) {
+    public void setCoordY(String coordY) {
         this.coordY = coordY;
     }
 
-    public void setCoordH(double coordH) {
+    public void setCoordH(String coordH) {
         this.coordH = coordH;
     }
 
@@ -43,15 +52,15 @@ public class Coordinate {
         return number;
     }
 
-    public double getCoordX() {
+    public String getCoordX() {
         return coordX;
     }
 
-    public double getCoordY() {
+    public String getCoordY() {
         return coordY;
     }
 
-    public double getCoordH() {
+    public String getCoordH() {
         return coordH;
     }
 
@@ -59,8 +68,10 @@ public class Coordinate {
     public String toString() {
         if (isXYH) {
             return number + " " + coordX + " " + coordY + " " + coordH;
-        } else {
+        } else if (isXY) {
             return number + " " + coordX + " " + coordY;
+        } else {
+            return number + " " + coordX;
         }
     }
 
