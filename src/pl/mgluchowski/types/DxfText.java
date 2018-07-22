@@ -62,7 +62,7 @@ public class DxfText {
         // wstawianie nazwy i wysokości punktu
         return "TEXT\n"
                 + "  5\n"
-                + (100 + id) + "A\n"
+                + (1000 + id) + "A\n"
                 + "330\n"
                 + "1F\n"
                 + "100\n"

@@ -34,7 +34,7 @@ public class DxfPoint {
         }
         return "POINT\n"
                 + "  5\n"
-                + (100 + id) + "\n"
+                + (1000 + id) + "\n"
                 + "330\n"
                 + "1F\n"
                 + "100\n"
