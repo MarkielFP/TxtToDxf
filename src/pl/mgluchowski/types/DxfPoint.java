@@ -5,15 +5,21 @@ import pl.mgluchowski.output.DxfFileSettings;
 public class DxfPoint {
 
     private Coordinate coordinate;
-    private String name = coordinate.getNumber();
-    private String x = coordinate.getCoordX();
-    private String y = coordinate.getCoordY();
-    private String h = coordinate.getCoordH();
+    private int id;
+    private String name;
+    private String x;
+    private String y;
+    private String h;
     private String layerName;
 
-    public DxfPoint(Coordinate coordinate) {
-        this.layerName = DxfFileSettings.layerName;
+    public DxfPoint(Coordinate coordinate, int id) {
         this.coordinate = coordinate;
+        this.id = id;
+        this.name = coordinate.getNumber();
+        this.x = coordinate.getCoordX();
+        this.y = coordinate.getCoordY();
+        this.h = coordinate.getCoordH();
+        this.layerName = DxfFileSettings.layerName;
     }
 
     @Override
@@ -27,23 +33,23 @@ public class DxfPoint {
             h = "0.0";
         }
         return "POINT\n"
-                + "5\n"
-                + "271\n"
+                + "  5\n"
+                + (100 + id) + "\n"
                 + "330\n"
                 + "1F\n"
                 + "100\n"
                 + "AcDbEntity\n"
-                + "8\n"
+                + "  8\n"
                 + layerName + "\n"
                 + "100\n"
                 + "AcDbPoint\n"
-                + "10\n"
+                + " 10\n"
                 + x + "\n"
-                + "20\n"
+                + " 20\n"
                 + y + "\n"
-                + "30\n"
+                + " 30\n"
                 + h + "\n"
-                + "0";
+                + "  0\n";
     }
 
 }
